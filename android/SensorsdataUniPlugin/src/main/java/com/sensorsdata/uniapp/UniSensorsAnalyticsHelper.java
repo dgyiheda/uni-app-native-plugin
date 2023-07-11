@@ -31,7 +31,8 @@ public class UniSensorsAnalyticsHelper {
                 }
                 JSONObject appConfig = jsonConfig.getJSONObject("app");
                 if (appConfig != null) {
-                    configOptions.setRemoteConfigUrl(appConfig.getString("remote_config_url"))
+                    configOptions
+                            .setRemoteConfigUrl(appConfig.getString("remote_config_url"))
                             .setAutoTrackEventType(JSONUtils.optObject(appConfig, "auto_track", Integer.class, 0))
                             .setFlushInterval(JSONUtils.optObject(appConfig, "flush_interval", Integer.class, 15000))
                             .setFlushBulkSize(JSONUtils.optObject(appConfig, "flush_bulkSize", Integer.class, 100))
@@ -42,6 +43,15 @@ public class UniSensorsAnalyticsHelper {
                     if (JSONUtils.optObject(appConfig, "track_crash", Boolean.class, false)) {
                         configOptions.enableTrackAppCrash();
                     }
+                    //控制请求远程配置
+                    if (JSONUtils.optObject(appConfig, "enable_remote_config", Boolean.class, true)) {
+                        configOptions.disableRandomTimeRequestRemoteConfig();
+                    }
+
+                    //控制session是否开启
+                    configOptions.enableSession(JSONUtils.optObject(appConfig, "enable_session", Boolean.class, true));
+
+
                     JSONObject androidConfig = appConfig.getJSONObject("android");
                     if (androidConfig != null) {
                         session = JSONUtils.optObject(androidConfig, "session_interval_time", Integer.class, 30000);
