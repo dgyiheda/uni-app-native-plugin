@@ -1,2 +1,5 @@
 .idea
 FirstDemo
+.DS_Store
+.build
+.git

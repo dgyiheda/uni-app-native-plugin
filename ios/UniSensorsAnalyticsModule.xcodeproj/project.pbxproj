@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F43D7F5B2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43D7F5A2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework */; };
 		FC692F1D25B180DE0010296F /* UniSensorsAnalyticsProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC692F1925B180DE0010296F /* UniSensorsAnalyticsProxy.m */; };
 		FC692F1E25B180DE0010296F /* UniSensorsAnalyticsModule.h in Headers */ = {isa = PBXBuildFile; fileRef = FC692F1A25B180DE0010296F /* UniSensorsAnalyticsModule.h */; };
 		FC692F1F25B180DE0010296F /* UniSensorsAnalyticsProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FC692F1B25B180DE0010296F /* UniSensorsAnalyticsProxy.h */; };
 		FC692F2025B180DE0010296F /* UniSensorsAnalyticsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FC692F1C25B180DE0010296F /* UniSensorsAnalyticsModule.m */; };
-		FC692F2B25B181270010296F /* SensorsAnalyticsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC692F2A25B181270010296F /* SensorsAnalyticsSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F43D7F5A2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SensorsAnalyticsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC692F0C25B180CA0010296F /* UniSensorsAnalyticsModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UniSensorsAnalyticsModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC692F1025B180CA0010296F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC692F1925B180DE0010296F /* UniSensorsAnalyticsProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniSensorsAnalyticsProxy.m; sourceTree = "<group>"; };
 		FC692F1A25B180DE0010296F /* UniSensorsAnalyticsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniSensorsAnalyticsModule.h; sourceTree = "<group>"; };
 		FC692F1B25B180DE0010296F /* UniSensorsAnalyticsProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniSensorsAnalyticsProxy.h; sourceTree = "<group>"; };
 		FC692F1C25B180DE0010296F /* UniSensorsAnalyticsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniSensorsAnalyticsModule.m; sourceTree = "<group>"; };
-		FC692F2A25B181270010296F /* SensorsAnalyticsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SensorsAnalyticsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,7 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC692F2B25B181270010296F /* SensorsAnalyticsSDK.framework in Frameworks */,
+				F43D7F5B2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +68,7 @@
 		FC692F2925B181270010296F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FC692F2A25B181270010296F /* SensorsAnalyticsSDK.framework */,
+				F43D7F5A2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,19 +283,24 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 75FYWDWHL5;
+				DEVELOPMENT_TEAM = KHQJUC6F3H;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../../GitHub/uniapp_custom_base/SDK/inc\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../../GitHub/uniapp_custom_base/SDK/inc\"/**",
+					"\"$(SRCROOT)/../../../SDK/uniapp/3.8.4_native/SDK/SDK/inc\"/**",
+				);
 				INFOPLIST_FILE = UniSensorsAnalyticsModule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fno-objc-msgsend-selector-stubs";
 				PRODUCT_BUNDLE_IDENTIFIER = SA.UniSensorsAnalyticsModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -309,19 +314,24 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 75FYWDWHL5;
+				DEVELOPMENT_TEAM = KHQJUC6F3H;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../../GitHub/uniapp_custom_base/SDK/inc\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../../GitHub/uniapp_custom_base/SDK/inc\"/**",
+					"\"$(SRCROOT)/../../../SDK/uniapp/3.8.4_native/SDK/SDK/inc\"/**",
+				);
 				INFOPLIST_FILE = UniSensorsAnalyticsModule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fno-objc-msgsend-selector-stubs";
 				PRODUCT_BUNDLE_IDENTIFIER = SA.UniSensorsAnalyticsModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

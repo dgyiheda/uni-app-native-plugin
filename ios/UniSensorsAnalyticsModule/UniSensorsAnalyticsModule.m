@@ -518,6 +518,11 @@ WX_EXPORT_METHOD(@selector(initSDK:))
     if ([enableEncrypt isKindOfClass:[NSNumber class]]) {
         configOptions.enableEncrypt = [enableEncrypt boolValue];
     }
+    
+    NSNumber *enableSession = appConfig[@"enable_session"];
+    if ([enableSession isKindOfClass:[NSNumber class]]) {
+        configOptions.enableSession = [enableSession boolValue];
+    }
 
     NSNumber *addChannelCallback = appConfig[@"add_channel_callback_event"];
     if ([addChannelCallback isKindOfClass:[NSNumber class]]) {

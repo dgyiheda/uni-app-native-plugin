@@ -1,5 +1,5 @@
 //
-// UIView+SensorsAnalytics.h
+// UIVIew+SensorsAnalytics.h
 // SensorsAnalyticsSDK
 //
 // Created by 陈玉国 on 2022/8/29.
