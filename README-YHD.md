@@ -4,11 +4,11 @@
   <img src="https://yhd-fe-monitor.oss-cn-shenzhen.aliyuncs.com/static/images/code.png" title="logo" float=left>
 </p>
 
-### IOS开发流程
+### IOS 开发流程
 
-1. 引入SensorsAnalyticsSDK工程到uniapp原生插件离线工程
-2. 引入UniSensorsAnalyticsModule工程到uniapp原生插件离线工程
-3. 构建framework
+1. 引入 SensorsAnalyticsSDK 工程到 uniapp 原生插件离线工程
+2. 引入 UniSensorsAnalyticsModule 工程到 uniapp 原生插件离线工程
+3. 构建 framework
 
 ```bash
 # 进入产出目录
@@ -19,9 +19,17 @@ xcodebuild -create-xcframework -framework Release-iphoneos/UniSensorsAnalyticsMo
 xcodebuild -create-xcframework -framework Release-iphoneos/SensorsAnalyticsSDK.framework -framework Release-iphonesimulator/SensorsAnalyticsSDK.framework -output ../../Sensorsdata-UniPlugin-App/ios/SensorsAnalyticsSDK.xcframework
 ```
 
-### Android开发流程
+### Android 开发流程
+
+1. 导入插件源码到 Android Studio [仓库地址](https://github.com/dgyiheda/uni-app-native-plugin/tree/master/android)
+2. windows 构建命令：uni-app-native-plugin\android>`gradlew assembleRelease`
+3. mac、linux 构建命令：uni-app-native-plugin\android>`./gradlew assembleRelease`
+
+```bash
+# 进入产出目录
+cd uni-app-native-plugin\build\outputs\aar
 
 ### 版本更新记录
 
 请参见 [release 发版记录](https://github.com/dgyiheda/uni-app-native-plugin/releases)
-
+```
