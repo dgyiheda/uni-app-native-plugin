@@ -90,5 +90,8 @@ public class UniSensorsAnalyticsHelper {
         SensorsDataAPI.sharedInstance().setSessionIntervalTime(session);
         SensorsDataAPI.sharedInstance().enableNetworkRequest(enableNetworkRequest);
         Log.i(LOG_TAG, "SensorsAnalytics SDK init success!");
+
+        SensorsDataAPI.sharedInstance().trackAppInstall();
+        Log.i(LOG_TAG, "SensorsAnalytics trackAppInstall event");
     }
 }
