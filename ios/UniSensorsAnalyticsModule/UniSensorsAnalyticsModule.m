@@ -549,6 +549,9 @@ WX_EXPORT_METHOD(@selector(initSDK:))
     if ([globalProperties isKindOfClass:NSDictionary.class]) {
         [SensorsAnalyticsSDK.sharedInstance registerSuperProperties:globalProperties];
     }
+
+    // 激活安装事件并收集
+    [[SensorsAnalyticsSDK sharedInstance] trackAppInstall];
 }
 
 #pragma mark - SDK IDS
