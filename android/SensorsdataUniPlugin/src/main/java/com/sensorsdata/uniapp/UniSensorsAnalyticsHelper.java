@@ -49,6 +49,12 @@ public class UniSensorsAnalyticsHelper {
                     configOptions.enableSession(JSONUtils.optObject(appConfig, "enable_session", Boolean.class, true));
                     Log.e(UniSensorsAnalyticsModule.LOG_TAG, "enable_session: " + JSONUtils.optObject(appConfig, "enable_session", Boolean.class, true));
 
+                    //禁用分散请求远程配置
+                    if (JSONUtils.optObject(appConfig, "disable_random_time_request_remote_config", Boolean.class, false)) {
+                        configOptions.disableRandomTimeRequestRemoteConfig();
+                    }
+                    Log.e(UniSensorsAnalyticsModule.LOG_TAG, "disable_random_time_request_remote_config: " + JSONUtils.optObject(appConfig, "disable_random_time_request_remote_config", Boolean.class, false));
+
                     JSONObject androidConfig = appConfig.getJSONObject("android");
                     if (androidConfig != null) {
                         session = JSONUtils.optObject(androidConfig, "session_interval_time", Integer.class, 30000);
