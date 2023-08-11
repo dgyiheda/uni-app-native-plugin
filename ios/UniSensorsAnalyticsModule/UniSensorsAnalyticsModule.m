@@ -543,13 +543,20 @@ WX_EXPORT_METHOD(@selector(initSDK:))
     if ([iOSConfigs isKindOfClass:[NSDictionary class]] && [iOSConfigs[@"max_cache_size"] isKindOfClass:[NSNumber class]]) {
         configOptions.maxCacheSize = [iOSConfigs[@"maxCacheSize"] integerValue];
     }
+    
+    // 是否关闭分散请求远程配置
+    NSNumber *disableRandomTimeRequestRemoteConfig = appConfig[@"disable_random_time_request_remote_config"];
+    if ([disableRandomTimeRequestRemoteConfig isKindOfClass:[NSNumber class]]) {
+//        [configOptions disableRandomTimeRequestRemoteConfig]
+        configOptions.disableRandomTimeRequestRemoteConfig = [disableRandomTimeRequestRemoteConfig boolValue];
+    }
 
     // 开启 SDK
     [SensorsAnalyticsSDK startWithConfigOptions:configOptions];
     if ([globalProperties isKindOfClass:NSDictionary.class]) {
         [SensorsAnalyticsSDK.sharedInstance registerSuperProperties:globalProperties];
     }
-
+    
     // 激活安装事件并收集
     [[SensorsAnalyticsSDK sharedInstance] trackAppInstall];
 }
