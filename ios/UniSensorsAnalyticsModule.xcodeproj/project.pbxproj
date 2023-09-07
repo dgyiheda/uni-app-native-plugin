@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		F43D7F5B2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43D7F5A2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework */; };
+		F49F9D7F2AA9721B00782669 /* SensorsAdvertising.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D9E6D2AA82B2800536D56 /* SensorsAdvertising.xcframework */; };
 		FC692F1D25B180DE0010296F /* UniSensorsAnalyticsProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC692F1925B180DE0010296F /* UniSensorsAnalyticsProxy.m */; };
 		FC692F1E25B180DE0010296F /* UniSensorsAnalyticsModule.h in Headers */ = {isa = PBXBuildFile; fileRef = FC692F1A25B180DE0010296F /* UniSensorsAnalyticsModule.h */; };
 		FC692F1F25B180DE0010296F /* UniSensorsAnalyticsProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FC692F1B25B180DE0010296F /* UniSensorsAnalyticsProxy.h */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		F43D7F5A2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SensorsAnalyticsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47D9E6D2AA82B2800536D56 /* SensorsAdvertising.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SensorsAdvertising.xcframework; path = "../../../ios/Plugins/sad-sdk-ios/SensorsAdvertising/SensorsAdvertising.xcframework"; sourceTree = "<group>"; };
 		FC692F0C25B180CA0010296F /* UniSensorsAnalyticsModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UniSensorsAnalyticsModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC692F1025B180CA0010296F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC692F1925B180DE0010296F /* UniSensorsAnalyticsProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniSensorsAnalyticsProxy.m; sourceTree = "<group>"; };
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49F9D7F2AA9721B00782669 /* SensorsAdvertising.xcframework in Frameworks */,
 				F43D7F5B2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +71,7 @@
 		FC692F2925B181270010296F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F47D9E6D2AA82B2800536D56 /* SensorsAdvertising.xcframework */,
 				F43D7F5A2A5EA7B0001486B7 /* SensorsAnalyticsSDK.framework */,
 			);
 			name = Frameworks;
