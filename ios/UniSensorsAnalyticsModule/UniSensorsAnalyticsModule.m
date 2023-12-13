@@ -29,6 +29,13 @@
 #import "SensorsAnalyticsSDK.h"
 #endif
 
+// 广告标识
+#if __has_include(<SensorsAdvertising/SensorsAdvertising.h>)
+#import <SensorsAdvertising/SensorsAdvertising.h>
+#else
+#import "SensorsAdvertising.h"
+#endif
+
 #if __has_include(<SensorsFocus/SensorsFocus.h>)
 #import <SensorsFocus/SensorsFocus.h>
 #endif
@@ -97,18 +104,18 @@ WX_EXPORT_METHOD(@selector(track:properties:))
     }];
 }
 
-WX_EXPORT_METHOD(@selector(trackAppInstall:))
-/**
- * 记录 $AppInstall 事件，用于在 App 首次启动时追踪渠道来源，并设置追踪渠道事件的属性。
- * 这是 Sensors Analytics 进阶功能，请参考文档 https://sensorsdata.cn/manual/track_installation.html
- *
- * @param properties : object
- */
-- (void)trackAppInstall:(NSDictionary *)properties {
-    [self performSelectorWithImplementation:^{
-        [[SensorsAnalyticsSDK sharedInstance] trackInstallation:@"$AppInstall" withProperties:properties];
-    }];
-}
+//WX_EXPORT_METHOD(@selector(trackAppInstall:))
+///**
+// * 记录 $AppInstall 事件，用于在 App 首次启动时追踪渠道来源，并设置追踪渠道事件的属性。
+// * 这是 Sensors Analytics 进阶功能，请参考文档 https://sensorsdata.cn/manual/track_installation.html
+// *
+// * @param properties : object
+// */
+//- (void)trackAppInstall:(NSDictionary *)properties {
+//    [self performSelectorWithImplementation:^{
+//        [[SensorsAnalyticsSDK sharedInstance] trackInstallation:@"$AppInstall" withProperties:properties];
+//    }];
+//}
 
 WX_EXPORT_METHOD(@selector(identify:))
 /**
@@ -550,15 +557,21 @@ WX_EXPORT_METHOD(@selector(initSDK:))
 //        [configOptions disableRandomTimeRequestRemoteConfig]
         configOptions.disableRandomTimeRequestRemoteConfig = [disableRandomTimeRequestRemoteConfig boolValue];
     }
-
+    
     // 开启 SDK
     [SensorsAnalyticsSDK startWithConfigOptions:configOptions];
+    
     if ([globalProperties isKindOfClass:NSDictionary.class]) {
         [SensorsAnalyticsSDK.sharedInstance registerSuperProperties:globalProperties];
     }
-    
-    // 激活安装事件并收集
-    [[SensorsAnalyticsSDK sharedInstance] trackAppInstall];
+  
+    // 初始化 SensorsAdvertising SDK
+    SADConfigOptions *sadconfigOptions = [[SADConfigOptions alloc] initWithLaunchOptions:nil];
+    // sadconfigOptions 配置  激活事件关闭渠道匹配的回调请求
+    // sadconfigOptions.disableAppInstallCallback = YES;
+    // ...
+    [SensorsAdvertising startWithConfigOptions:sadconfigOptions];
+
 }
 
 #pragma mark - SDK IDS
