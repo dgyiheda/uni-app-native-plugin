@@ -9,9 +9,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.sensorsdata.analytics.android.sdk.SAConfigOptions;
 import com.sensorsdata.analytics.android.sdk.SensorsDataAPI;
 import com.sensorsdata.uniapp.property.PluginVersionInterceptor;
-import com.sensorsdata.uniapp.property.UniSAGlobalPropertyPlugin;
 import com.sensorsdata.uniapp.property.UniPropertyManager;
+import com.sensorsdata.uniapp.property.UniSAGlobalPropertyPlugin;
 import com.sensorsdata.uniapp.util.JSONUtils;
+import com.sensorsdata.uniapp.util.NetWorkUtils;
 import com.sensorsdata.uniapp.util.VersionUtils;
 
 public class UniSensorsAnalyticsHelper {
@@ -55,6 +56,11 @@ public class UniSensorsAnalyticsHelper {
                     }
                     Log.e(UniSensorsAnalyticsModule.LOG_TAG, "disable_random_time_request_remote_config: " + JSONUtils.optObject(appConfig, "disable_random_time_request_remote_config", Boolean.class, false));
 
+                    JSONObject propertiesv = appConfig.getJSONObject("properties");
+                    if (propertiesv != null) {
+                        //获取内网ip
+                        propertiesv.put("$yhd_internal_ip", NetWorkUtils.getIpAddressByWifi(context));
+                    }
                     JSONObject androidConfig = appConfig.getJSONObject("android");
                     if (androidConfig != null) {
                         session = JSONUtils.optObject(androidConfig, "session_interval_time", Integer.class, 30000);
@@ -88,4 +94,7 @@ public class UniSensorsAnalyticsHelper {
         SensorsDataAPI.sharedInstance().trackAppInstall();
         Log.i(LOG_TAG, "SensorsAnalytics trackAppInstall event");
     }
+
+
+
 }
